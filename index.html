@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minecraft Lunarvale</title>
+    <meta name="generator" content="Jekyll v3.9.5">
+    <meta property="og:title" content="Minecraft Lunarvale">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta property="twitter:title" content="Minecraft Lunarvale">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #1a1a2e, #16213e);
+            color: #ffffff;
+            text-align: center;
+        }
+        .header {
+            background-color: #0f3460;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom: 4px solid #e94560;
+        }
+        .nav {
+            background-color: #16213e;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        .nav a {
+            color: #e94560;
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav a:hover {
+            color: #ffffff;
+        }
+        .content {
+            padding: 20px;
+            display: none;
+            background-color: #1a1a2e;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+            margin: 20px;
+        }
+        .content.active {
+            display: block;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e94560;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #f15a74;
+        }
+        h2 {
+            color: #e94560;
+        }
+        p {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Minecraft Lunarvale</h1>
+    </div>
+    <div class="nav">
+        <a href="#" onclick="showTab('home')">Home</a>
+        <a href="#" onclick="showTab('updates')">Updates</a>
+        <a href="#" onclick="showTab('download')">Download</a>
+        <a href="#" onclick="showTab('discord')">Discord</a>
+        <a href="#" onclick="showTab('credit')">Credit</a>
+        <a href="#" onclick="showTab('screenshot')">Screenshots</a>
+    </div>
+    <div class="content active" id="home">
+        <h2>Welcome to Minecraft Lunarvale</h2>
+        <p>Experience a new world of Minecraft with unique features and enhancements!</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/YSKrHm3RQvw" frameborder="0" allowfullscreen></iframe>
+        <br>
+        <a href="#" class="btn" onclick="showTab('download')">Download Now</a>
+    </div>
+    <div class="content" id="updates">
+        <h2>🆕 New Mods in Minecraft Lunarvale - PS Vita 🎮🎨</h2>
+        <p>In Lunarvale on PS Vita, we've added a set of mods designed to enhance your experience and make the gameplay smoother and more beautiful! Here are the latest mods added:</p>
+        <ul style="text-align: left; padding-left: 30px;">
+            <li><strong>🎨 Improved Texture Pack – Lunar Texture Pack for PS Vita:</strong>
+                <ul>
+                    <li>Enhanced graphics for PS Vita to match the device’s capabilities while maintaining good performance.</li>
+                    <li>New block and item designs with a fantasy style and intricate details.</li>
+                    <li>Improved lighting effects, like sunset and sunrise effects, to make the environment more realistic.</li>
+                    <li>New water and glass textures with improved reflection effects.</li>
+                </ul>
+            </li>
+            <li><strong>🌿 Improved Nature and Environment:</strong>
+                <ul>
+                    <li>Improved trees and plants for a more vibrant look on PS Vita.</li>
+                    <li>Wind effects on trees and plants to create a more dynamic environment.</li>
+                    <li>Added new shadows for trees and buildings to enhance the visual appeal.</li>
+                </ul>
+            </li>
+            <li><strong>🛠️ UI (User Interface) Updates:</strong>
+                <ul>
+                    <li>Redesigned inventory and tool menus for easier access and optimal performance on PS Vita.</li>
+                    <li>Enhanced item and resource icons to make them clearer.</li>
+                    <li>Added animations in menus for a more interactive experience.</li>
+                </ul>
+            </li>
+            <li><strong>🔥 Combat Enhancements and Special Effects:</strong>
+                <ul>
+                    <li>New weapon effects, including sparks and fire effects when using swords and powerful weapons.</li>
+                    <li>New sound effects during attacks and explosions for a more realistic feel.</li>
+                    <li>Improved character animations during combat for smoother movements.</li>
+                </ul>
+            </li>
+            <li><strong>🌌 Performance Enhancements:</strong>
+                <ul>
+                    <li>Reduced lag and increased stability while playing on PS Vita, ensuring a smoother gaming experience.</li>
+                    <li>Improved performance for large objects and detailed areas to run better on the device.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="content" id="download">
+        <h2>Download Minecraft Lunarvale</h2>
+        <p>Get the latest version from our official sources.</p>
+        <a href="#" class="btn">Download Now</a>
+    </div>
+    <div class="content" id="discord">
+        <h2>🌟 Join the Minecraft Lunarvale Discord Server 🎮✨</h2>
+        <p>Are you ready to join our exciting community in Minecraft Lunarvale? 🌍</p>
+        <p>We offer a Discord server where you can:</p>
+        <ul style="text-align: left; padding-left: 30px;">
+            <li>Interact with players from around the world. 🌎</li>
+            <li>Share your in-game experiences and showcase the latest projects you're working on.</li>
+            <li>Get tips and tricks from pro players to improve your skills.</li>
+            <li>Discuss updates and mods and stay updated on all things Lunarvale.</li>
+            <li>Participate in exclusive events and challenges with amazing rewards! 🏆</li>
+        </ul>
+        <p><strong>🔗 Invite Link:</strong> <a href="https://discord.gg/jVCs8a7T" target="_blank" class="btn">Join Discord</a></p>
+        <p>Don't miss the chance to join the largest community of Lunarvale players! Let’s build an unforgettable world together!</p>
+    </div>
+    <div class="content" id="credit">
+        <h2>Credits - Minecraft Lunarvale PS Vita 🎮🌟</h2>
+        <p>We would like to give special thanks to all the amazing individuals and teams who made Minecraft Lunarvale on PS Vita possible. Without your hard work and dedication, this world wouldn't be what it is today.</p>
+        <h3>Development Team:</h3>
+        <ul style="text-align: left; padding-left: 30px;">
+            <li><strong>Lunarvale Developers:</strong> For creating and maintaining the modded world of Lunarvale.</li>
+            <li><strong>Texture Pack Designers:</strong> For their incredible work in enhancing the visual experience.</li>
+            <li><strong>Sound Designers:</strong> For crafting the immersive sound effects that bring Lunarvale to life.</li>
+            <li><strong>Beta Testers:</strong> For providing valuable feedback and helping us improve the game.</li>
+        </ul>
+        <h3>Community:</h3>
+        <ul style="text-align: left; padding-left: 30px;">
+            <li><strong>Lunarvale Players:</strong> Thank you for your continuous support, feedback, and contributions to the community.</li>
+            <li><strong>Discord Community:</strong> For creating a vibrant space where we can share experiences, strategies, and build lasting friendships.</li>
+        </ul>
+        <h3>Special Thanks:</h3>
+        <ul style="text-align: left; padding-left: 30px;">
+            <li><strong>Mojang Studios:</strong> For creating the beloved Minecraft universe that allows us to bring Lunarvale to life.</li>
+            <li><strong>PS Vita Community:</strong> For supporting and keeping the PS Vita platform alive and thriving.</li>
+        </ul>
+    </div>
+    <div class="content" id="screenshot">
+        <h2>Screenshots</h2>
+        <p>No screenshots available yet.</p>
+    </div>
+    <script>
+        function showTab(tabName) {
+            var i, tabContent;
+            tabContent = document.getElementsByClassName("content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove('active');
+            }
+            document.getElementById(tabName).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
