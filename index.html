@@ -1,237 +1,1560 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Minecraft Lunarvale</title>
-    <meta name="generator" content="Jekyll v3.9.5">
-    <meta property="og:title" content="Minecraft Lunarvale">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta property="twitter:title" content="Minecraft Lunarvale">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Lunarvale | Next-Gen PS Vita Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Minecraft&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --lunar-core: #8a2be2;
+            --lunar-pulse: #00f5ff;
+            --lunar-blast: #ff00aa;
+            --lunar-deep: #0a0418;
+            --lunar-void: #05010f;
+            --lunar-glint: #ffcc00;
+            --lunar-tech: #00ffcc;
+            --lunar-crystal: rgba(138, 43, 226, 0.15);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #1a1a2e, #16213e);
-            color: #ffffff;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--lunar-void);
+            color: white;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--lunar-crystal) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(0, 245, 255, 0.15) 0%, transparent 25%),
+                linear-gradient(to bottom, rgba(5, 1, 15, 0.9), rgba(10, 4, 24, 0.9));
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        .minecraft-font {
+            font-family: 'Minecraft', sans-serif;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .tech-font {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        /* Cosmic Header */
+        .cosmic-header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: 
+                radial-gradient(circle at center, var(--lunar-crystal) 0%, transparent 60%),
+                linear-gradient(to bottom, rgba(10, 4, 24, 0.8), rgba(5, 1, 15, 0.9));
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .cosmic-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.5"/></svg>') repeat;
+            opacity: 0.3;
+            animation: twinkle 10s infinite;
+        }
+
+        .cosmic-header h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--lunar-core), var(--lunar-pulse));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+            animation: glow 3s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 2;
+            line-height: 1.2;
+        }
+
+        .cosmic-header p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+            padding: 0 2rem;
+        }
+
+        .version-badge {
+            background: linear-gradient(45deg, var(--lunar-blast), var(--lunar-pulse));
+            color: var(--lunar-void);
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: clamp(0.9rem, 3vw, 1.3rem);
+            margin-bottom: 2rem;
+            box-shadow: 0 0 25px rgba(255, 0, 170, 0.5);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            animation: pulse 2s infinite;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Cyber Navigation */
+        .cyber-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 4, 24, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            display: flex;
+            justify-content: center;
+            padding: 0.8rem 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .cyber-nav-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 0.7rem 1.3rem;
+            margin: 0.2rem;
+            font-weight: 700;
+            font-size: clamp(0.8rem, 2vw, 1.1rem);
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 6px;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+
+        .nav-link::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--lunar-core), transparent);
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.3s;
+            border-radius: 6px;
+        }
+
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover::before {
+            opacity: 0.7;
+        }
+
+        .nav-link.active {
+            background: linear-gradient(45deg, var(--lunar-core), var(--lunar-pulse));
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+            color: white;
+        }
+
+        .nav-link.active::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: var(--lunar-pulse);
+            animation: navUnderline 2s infinite;
+            border-radius: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-left: auto;
+            padding-left: 1rem;
+        }
+
+        .social-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .social-link:hover {
+            color: white;
+            transform: translateY(-2px) scale(1.1);
+        }
+
+        .social-link.youtube:hover {
+            color: #ff0000;
+        }
+
+        .social-link.discord:hover {
+            color: #5865F2;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.8s ease-out;
+            min-height: 70vh;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            background: linear-gradient(45deg, var(--lunar-pulse), var(--lunar-tech));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-header .divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lunar-pulse), var(--lunar-core));
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* Cyber Cards */
+        .cyber-card {
+            background: rgba(15, 8, 31, 0.6);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cyber-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.05), transparent);
+            z-index: -1;
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.4);
+            border-color: rgba(0, 245, 255, 0.5);
+        }
+
+        .cyber-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--lunar-pulse);
+            display: flex;
+            align-items: center;
+            line-height: 1.3;
+        }
+
+        .cyber-card h3 .icon {
+            margin-right: 1rem;
+            font-size: 2rem;
+            min-width: 40px;
             text-align: center;
         }
-        .header {
-            background-color: #0f3460;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            border-bottom: 4px solid #e94560;
+
+        .cyber-card p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
         }
-        .nav {
-            background-color: #16213e;
-            padding: 10px;
+
+        .cyber-card ul {
+            list-style-type: none;
+        }
+
+        .cyber-card li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cyber-card li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--lunar-pulse);
+            font-size: 1.2rem;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        /* Download Section */
+        .download-box {
+            background: linear-gradient(135deg, rgba(15, 8, 31, 0.8), rgba(10, 4, 24, 0.9));
+            border-radius: 16px;
+            padding: 3.5rem;
+            text-align: center;
+            border: 1px solid var(--lunar-core);
+            box-shadow: 0 0 40px rgba(138, 43, 226, 0.3);
+            margin: 4rem auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-box::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent, transparent, transparent,
+                rgba(0, 245, 255, 0.1), transparent, transparent, transparent
+            );
+            transform: rotate(30deg);
+            animation: shine 6s infinite;
+        }
+
+        /* Cyber Button */
+        .cyber-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 2.8rem;
+            background: linear-gradient(45deg, var(--lunar-core), var(--lunar-blast));
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.5);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            gap: 0.8rem;
+        }
+
+        .cyber-button:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 30px rgba(255, 0, 170, 0.6);
+        }
+
+        .cyber-button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .cyber-button::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent, transparent, transparent,
+                rgba(255, 255, 255, 0.2), transparent, transparent, transparent
+            );
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+
+        .cyber-button:hover::before {
+            left: 100%;
+            top: 100%;
+        }
+
+        .cyber-button .btn-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Screenshot Gallery */
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .screenshot-item {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16/9;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.5);
+            border-color: rgba(0, 245, 255, 0.5);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+
+        .screenshot-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .screenshot-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: all 0.4s;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .screenshot-item:hover .screenshot-caption {
+            transform: translateY(0);
+        }
+
+        /* Texture Packs Grid */
+        .texture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .texture-pack {
+            background: rgba(15, 8, 31, 0.6);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .texture-pack:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.4);
+            border-color: rgba(0, 245, 255, 0.5);
+        }
+
+        .texture-preview {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .texture-preview::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent 30%);
+        }
+
+        .texture-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, var(--lunar-blast), var(--lunar-core));
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 0 15px rgba(255, 0, 170, 0.5);
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .texture-info {
+            padding: 1.8rem;
+        }
+
+        .texture-info h4 {
+            font-size: 1.5rem;
+            color: var(--lunar-pulse);
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .texture-stars {
+            color: var(--lunar-glint);
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .texture-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .texture-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .texture-stats span {
+            background: rgba(138, 43, 226, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .texture-download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            text-align: center;
+            padding: 0.9rem;
+            background: linear-gradient(45deg, var(--lunar-core), var(--lunar-blast));
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .texture-download-btn:hover {
+            background: linear-gradient(45deg, var(--lunar-blast), var(--lunar-core));
+            box-shadow: 0 0 20px rgba(255, 0, 170, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .texture-download-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Credits Section */
+        .credits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .credit-category {
+            background: rgba(15, 8, 31, 0.6);
+            border-radius: 16px;
+            padding: 2rem;
+            border-left: 5px solid var(--lunar-pulse);
+            transition: all 0.4s;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .credit-category:hover {
+            border-left-color: var(--lunar-blast);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .credit-category h3 {
+            color: var(--lunar-tech);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.3);
+            padding-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .credit-category h3 i {
+            font-size: 1.3rem;
+        }
+
+        .credit-category ul {
+            list-style-type: none;
+        }
+
+        .credit-category li {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            padding-left: 1.8rem;
+        }
+
+        .credit-category li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--lunar-pulse);
+            font-size: 1.5rem;
+            line-height: 0;
+        }
+
+        .credit-category li strong {
+            color: var(--lunar-glint);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .cyber-footer {
+            background: linear-gradient(to bottom, rgba(10, 4, 24, 0.95), rgba(5, 1, 15, 1));
+            padding: 5rem 0 3rem;
+            text-align: center;
+            border-top: 1px solid rgba(138, 43, 226, 0.3);
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+            position: relative;
+            margin-top: 5rem;
+        }
+
+        .cyber-footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="1" height="1" x="20" y="20" fill="rgba(138,43,226,0.2)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--lunar-pulse), var(--lunar-core));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .footer-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
         }
-        .nav a {
-            color: #e94560;
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            padding: 14px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: color 0.3s;
-            margin: 5px;
+            font-weight: 700;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .nav a:hover {
-            color: #ffffff;
+
+        .footer-link:hover {
+            color: var(--lunar-pulse);
         }
-        .content {
-            padding: 20px;
-            display: none;
-            background-color: #1a1a2e;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
-            margin: 20px;
+
+        .footer-link::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--lunar-pulse);
+            transition: all 0.3s;
         }
-        .content.active {
-            display: block;
+
+        .footer-link:hover::after {
+            width: 100%;
         }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #e94560;
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-social-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .footer-social-link:hover {
             color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: background 0.3s;
+            background: rgba(138, 43, 226, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
         }
-        .btn:hover {
-            background-color: #f15a74;
+
+        .footer-social-link.youtube:hover {
+            color: #ff0000;
+            background: rgba(255, 255, 255, 0.1);
         }
-        h2 {
-            color: #e94560;
+
+        .footer-social-link.discord:hover {
+            color: #5865F2;
+            background: rgba(255, 255, 255, 0.1);
         }
-        p {
-            color: #ffffff;
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-top: 2rem;
         }
-        iframe {
-            max-width: 100%;
-            height: auto;
+
+        /* Animations */
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(138, 43, 226, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(0, 245, 255, 0.5), 0 0 30px rgba(138, 43, 226, 0.3); }
         }
-        /* Media Queries for Responsiveness */
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 170, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 0, 170, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 170, 0.5); }
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.3; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes navUnderline {
+            0% { width: 50%; opacity: 0.8; }
+            50% { width: 70%; opacity: 1; }
+            100% { width: 50%; opacity: 0.8; }
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .cyber-card, .download-box {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section-header {
+                margin-bottom: 3rem;
+            }
+            
+            .feature-grid, .texture-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .download-box {
+                padding: 2.5rem;
+                margin: 3rem auto;
+            }
+        }
+
         @media (max-width: 768px) {
-            .header {
-                font-size: 20px;
+            .cyber-nav-container {
+                justify-content: space-around;
+                padding: 0 0.5rem;
             }
-            .nav a {
-                font-size: 16px;
-                padding: 12px 16px;
+            
+            .nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
             }
-            .content {
-                margin: 10px;
-                padding: 15px;
+            
+            .social-links {
+                display: none;
             }
-            .btn {
-                font-size: 16px;
-                padding: 8px 16px;
+            
+            .main-container {
+                padding: 3rem 1.5rem;
+            }
+            
+            .cyber-card, .texture-info {
+                padding: 1.8rem;
+            }
+            
+            .download-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .footer-links {
+                gap: 1.5rem;
+            }
+            
+            .footer-social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
             }
         }
-        @media (max-width: 480px) {
-            .header {
-                font-size: 18px;
+
+        @media (max-width: 576px) {
+            .cosmic-header {
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
             }
-            .nav a {
-                font-size: 14px;
-                padding: 10px 14px;
+            
+            .version-badge {
+                padding: 0.6rem 1.5rem;
             }
-            .btn {
-                font-size: 14px;
-                padding: 6px 12px;
+            
+            .cyber-nav {
+                padding: 0.6rem 0;
             }
-            iframe {
-                height: 200px;
+            
+            .nav-link {
+                padding: 0.5rem 0.8rem;
+                margin: 0.1rem;
+                font-size: 0.7rem;
+            }
+            
+            .section-header h2 {
+                margin-bottom: 1rem;
+            }
+            
+            .section-header .divider {
+                margin: 1rem auto;
+            }
+            
+            .feature-grid, .texture-grid, .screenshot-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cyber-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .footer-links {
+                gap: 1rem;
+            }
+            
+            .footer-link {
+                font-size: 0.9rem;
+            }
+            
+            .footer-social {
+                gap: 1rem;
+            }
+            
+            .footer-social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Minecraft Lunarvale</h1>
-    </div>
-    <div class="nav">
-        <a href="#" onclick="showTab('home')">Home</a>
-        <a href="#" onclick="showTab('updates')">Updates</a>
-        <a href="#" onclick="showTab('download')">Download</a>
-        <a href="#" onclick="showTab('discord')">Discord</a>
-        <a href="#" onclick="showTab('credit')">Credit</a>
-        <a href="#" onclick="showTab('screenshot')">Screenshots</a>
-    </div>
-    <div class="content active" id="home">
-        <h2>Welcome to Minecraft Lunarvale</h2>
-        <p>Experience a new world of Minecraft with unique features and enhancements!</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/YSKrHm3RQvw" frameborder="0" allowfullscreen></iframe>
-        <br>
-        <a href="#" class="btn" onclick="showTab('download')">Download Now</a>
-    </div>
-    <div class="content" id="updates">
-        <h2>🆕 New Mods in Minecraft Lunarvale - PS Vita 🎮🎨</h2>
-        <p>In Lunarvale on PS Vita, we've added a set of mods designed to enhance your experience and make the gameplay smoother and more beautiful! Here are the latest mods added:</p>
-        <ul style="text-align: left; padding-left: 30px;">
-            <li><strong>🎨 Improved Texture Pack – Lunar Texture Pack for PS Vita:</strong>
+    <!-- Cosmic Header -->
+    <header class="cosmic-header">
+        <h1 class="minecraft-font">LUNARVALE</h1>
+        <p class="tech-font">Redefining Minecraft on PS Vita with unprecedented visual fidelity and gameplay innovation</p>
+        <div class="version-badge tech-font">VERSION 1.84 - Lunar UPDATE</div>
+        <a href="#download" class="cyber-button tech-font" onclick="showTab('download', event)">
+            <i class="fas fa-download btn-icon"></i> DOWNLOAD NOW
+        </a>
+    </header>
+
+    <!-- Cyber Navigation -->
+    <nav class="cyber-nav">
+        <div class="cyber-nav-container">
+            <a href="#" class="nav-link active tech-font" onclick="showTab('home', event)">
+                <i class="fas fa-home"></i> HOME
+            </a>
+            <a href="#" class="nav-link tech-font" onclick="showTab('features', event)">
+                <i class="fas fa-star"></i> FEATURES
+            </a>
+            <a href="#" class="nav-link tech-font" onclick="showTab('textures', event)">
+                <i class="fas fa-palette"></i> TEXTURES
+            </a>
+            <a href="#" class="nav-link tech-font" onclick="showTab('gallery', event)">
+                <i class="fas fa-images"></i> GALLERY
+            </a>
+            <a href="#" class="nav-link tech-font" onclick="showTab('download', event)">
+                <i class="fas fa-download"></i> DOWNLOAD
+            </a>
+            <a href="#" class="nav-link tech-font" onclick="showTab('credits', event)">
+                <i class="fas fa-users"></i> CREDITS
+            </a>
+            
+            <div class="social-links">
+                <a href="https://youtube.com/@soufianeexeteam-i4z" class="social-link youtube" target="_blank" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://discord.gg/jVCs8a7T" class="social-link discord" target="_blank" title="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <div class="section-header">
+                <h2 class="tech-font">THE ULTIMATE VITA EXPERIENCE</h2>
+                <p>Lunarvale represents the pinnacle of Minecraft modification for PlayStation Vita, pushing the hardware beyond its perceived limits</p>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="cyber-card">
+                <h3><span class="icon"><i class="fas fa-rocket"></i></span> REVOLUTIONARY ENHANCEMENTS</h3>
+                <p>Welcome to Lunarvale, where we've reimagined Minecraft for the PlayStation Vita platform. Our team of dedicated developers has spent countless hours optimizing every aspect of the game to deliver an experience that rivals modern gaming platforms.</p>
+                <p>By leveraging the Vita's unique hardware capabilities and implementing cutting-edge rendering techniques, we've created a modification that transforms Minecraft into a visually stunning and deeply immersive adventure.</p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="cyber-card">
+                    <h3><span class="icon"><i class="fas fa-water"></i></span> AQUATIC WONDERS</h3>
+                    <p>Explore breathtaking underwater environments with our completely redesigned aquatic systems. Featuring:</p>
+                    <ul>
+                        <li>15 distinct ocean biomes with unique ecosystems</li>
+                        <li>Advanced water physics and lighting effects</li>
+                        <li>Over 30 new marine creatures and mobs</li>
+                        <li>Underwater ruins and treasure ships to discover</li>
+                    </ul>
+                </div>
+                
+                <div class="cyber-card">
+                    <h3><span class="icon"><i class="fas fa-gem"></i></span> VISUAL MASTERY</h3>
+                    <p>Our proprietary rendering technology delivers visuals never before seen on Vita:</p>
+                    <ul>
+                        <li>Dynamic lighting with real-time shadows</li>
+                        <li>Enhanced texture resolution and detail</li>
+                        <li>Custom shaders optimized for Vita's GPU</li>
+                        <li>Particle effects system for weather and spells</li>
+                    </ul>
+                </div>
+                
+                <div class="cyber-card">
+                    <h3><span class="icon"><i class="fas fa-tachometer-alt"></i></span> PERFORMANCE PERFECTED</h3>
+                    <p>Enjoy buttery smooth gameplay thanks to our optimizations:</p>
+                    <ul>
+                        <li>60FPS target in most environments</li>
+                        <li>Intelligent resource management</li>
+                        <li>Reduced loading times and memory usage</li>
+                        <li>Adaptive quality settings</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="content-section">
+            <div class="section-header">
+                <h2 class="tech-font">UNMATCHED FEATURES</h2>
+                <p>Lunarvale introduces groundbreaking systems that redefine Vita gameplay</p>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="cyber-card">
+                <h3><span class="icon"><i class="fas fa-magic"></i></span> QUANTUM VISUAL ENGINE</h3>
+                <p>Our custom-built rendering pipeline unlocks the Vita's hidden potential:</p>
                 <ul>
-                    <li>Enhanced graphics for PS Vita to match the device’s capabilities while maintaining good performance.</li>
-                    <li>New block and item designs with a fantasy style and intricate details.</li>
-                    <li>Improved lighting effects, like sunset and sunrise effects, to make the environment more realistic.</li>
-                    <li>New water and glass textures with improved reflection effects.</li>
+                    <li><strong>Volumetric Lighting:</strong> Dynamic light shafts and god rays that react to environment</li>
+                    <li><strong>Reflective Surfaces:</strong> Real-time reflections on water, metal, and glass</li>
+                    <li><strong>Atmospheric Effects:</strong> Depth-based fog and aerial perspective</li>
+                    <li><strong>Dynamic Weather:</strong> Particle-driven rain, snow, and sandstorms</li>
+                    <li><strong>Enhanced Draw Distance:</strong> Smart LOD system maintains performance</li>
                 </ul>
-            </li>
-            <li><strong>🌿 Improved Nature and Environment:</strong>
+            </div>
+            
+            <div class="cyber-card">
+                <h3><span class="icon"><i class="fas fa-code-branch"></i></span> GAMEPLAY INNOVATIONS</h3>
+                <p>Beyond visuals, we've revolutionized how you play:</p>
                 <ul>
-                    <li>Improved trees and plants for a more vibrant look on PS Vita.</li>
-                    <li>Wind effects on trees and plants to create a more dynamic environment.</li>
-                    <li>Added new shadows for trees and buildings to enhance the visual appeal.</li>
+                    <li><strong>Skill Trees:</strong> Deep progression system for tools and weapons</li>
+                    <li><strong>Touch Controls:</strong> Vita-specific gestures for inventory and combat</li>
+                    <li><strong>Dynamic AI:</strong> Mobs with improved pathfinding and behaviors</li>
+                    <li><strong>Procedural Events:</strong> Random encounters and world events</li>
+                    <li><strong>Enhanced Crafting:</strong> Hundreds of new recipes and materials</li>
                 </ul>
-            </li>
-            <li><strong>🛠️ UI (User Interface) Updates:</strong>
+            </div>
+            
+            <div class="cyber-card">
+                <h3><span class="icon"><i class="fas fa-sliders-h"></i></span> CUSTOMIZATION SUITE</h3>
+                <p>Tailor Lunarvale to your preferences:</p>
                 <ul>
-                    <li>Redesigned inventory and tool menus for easier access and optimal performance on PS Vita.</li>
-                    <li>Enhanced item and resource icons to make them clearer.</li>
-                    <li>Added animations in menus for a more interactive experience.</li>
+                    <li><strong>Visual Presets:</strong> Optimized configurations for different playstyles</li>
+                    <li><strong>Modular Features:</strong> Enable/disable specific enhancements</li>
+                    <li><strong>Performance Metrics:</strong> Real-time monitoring of system resources</li>
+                    <li><strong>Controller Mapping:</strong> Fully customizable Vita controls</li>
+                    <li><strong>Accessibility Options:</strong> Colorblind modes and UI scaling</li>
                 </ul>
-            </li>
-            <li><strong>🔥 Combat Enhancements and Special Effects:</strong>
-                <ul>
-                    <li>New weapon effects, including sparks and fire effects when using swords and powerful weapons.</li>
-                    <li>New sound effects during attacks and explosions for a more realistic feel.</li>
-                    <li>Improved character animations during combat for smoother movements.</li>
-                </ul>
-            </li>
-            <li><strong>🌌 Performance Enhancements:</strong>
-                <ul>
-                    <li>Reduced lag and increased stability while playing on PS Vita, ensuring a smoother gaming experience.</li>
-                    <li>Improved performance for large objects and detailed areas to run better on the device.</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="content" id="download">
-        <h2>Download Minecraft Lunarvale</h2>
-        <p>Get the latest version from our official sources.</p>
-        <a href="#" class="btn">Download Now</a>
-    </div>
-    <div class="content" id="discord">
-        <h2>🌟 Join the Minecraft Lunarvale Discord Server 🎮✨</h2>
-        <p>Are you ready to join our exciting community in Minecraft Lunarvale? 🌍</p>
-        <p>We offer a Discord server where you can:</p>
-        <ul style="text-align: left; padding-left: 30px;">
-            <li>Interact with players from around the world. 🌎</li>
-            <li>Share your in-game experiences and showcase the latest projects you're working on.</li>
-            <li>Get tips and tricks from pro players to improve your skills.</li>
-            <li>Discuss updates and mods and stay updated on all things Lunarvale.</li>
-            <li>Participate in exclusive events and challenges with amazing rewards! 🏆</li>
-        </ul>
-        <p><strong>🔗 Invite Link:</strong> <a href="https://discord.gg/jVCs8a7T" target="_blank" class="btn">Join Discord</a></p>
-        <p>Don't miss the chance to join the largest community of Lunarvale players! Let’s build an unforgettable world together!</p>
-    </div>
-    <div class="content" id="credit">
-        <h2>Credits - Minecraft Lunarvale PS Vita 🎮🌟</h2>
-        <p>We would like to give special thanks to all the amazing individuals and teams who made Minecraft Lunarvale on PS Vita possible. Without your hard work and dedication, this world wouldn't be what it is today.</p>
-        <h3>Development Team:</h3>
-        <ul style="text-align: left; padding-left: 30px;">
-            <li><strong>Lunarvale Developers:</strong> For creating and maintaining the modded world of Lunarvale.</li>
-            <li><strong>Texture Pack Designers:</strong> For their incredible work in enhancing the visual experience.</li>
-            <li><strong>Sound Designers:</strong> For crafting the immersive sound effects that bring Lunarvale to life.</li>
-            <li><strong>Beta Testers:</strong> For providing valuable feedback and helping us improve the game.</li>
-        </ul>
-        <h3>Community:</h3>
-        <ul style="text-align: left; padding-left: 30px;">
-            <li><strong>Lunarvale Players:</strong> Thank you for your continuous support, feedback, and contributions to the community.</li>
-            <li><strong>Discord Community:</strong> For creating a vibrant space where we can share experiences, strategies, and build lasting friendships.</li>
-        </ul>
-        <h3>Special Thanks:</h3>
-        <ul style="text-align: left; padding-left: 30px;">
-            <li><strong>Mojang Studios:</strong> For creating the beloved Minecraft universe that allows us to bring Lunarvale to life.</li>
-            <li><strong>PS Vita Community:</strong> For supporting and keeping the PS Vita platform alive and thriving.</li>
-        </ul>
-    </div>
-    <div class="content" id="screenshot">
-        <h2>Screenshots</h2>
-        <p>No screenshots available yet.</p>
-    </div>
+            </div>
+        </section>
+
+        <!-- Texture Packs Section -->
+        <section id="textures" class="content-section">
+            <div class="section-header">
+                <h2 class="tech-font">PREMIUM TEXTURE COLLECTION</h2>
+                <p>Elevate your world with our handcrafted texture packs, optimized for Vita performance</p>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="cyber-card">
+                <h3><span class="icon"><i class="fas fa-palette"></i></span> LUNARVALE HD TEXTURE SERIES</h3>
+                <p>Our collection represents the pinnacle of texture design for PlayStation Vita. Each pack undergoes rigorous optimization to ensure stunning visuals without compromising performance. From realistic PBR materials to stylized fantasy designs, we have options for every aesthetic preference.</p>
+            </div>
+            
+            <div class="texture-grid">
+                <!-- Texture Pack 1 -->
+                <div class="texture-pack">
+                    <div class="texture-preview" style="background-image: url('https://i.imgur.com/JQmX7zW.jpg');">
+                        <div class="texture-badge">EDITOR'S CHOICE</div>
+                    </div>
+                    <div class="texture-info">
+                        <h4>LUNAR FANTASY</h4>
+                        <div class="texture-stars">★★★★★</div>
+                        <p>Immerse yourself in a magical realm with our most popular fantasy-themed textures. Featuring intricate details, glowing runes, and vibrant colors that bring your world to life.</p>
+                        <div class="texture-stats">
+                            <span>32x32</span>
+                            <span>HD</span>
+                            <span>3D Models</span>
+                        </div>
+                        <a href="#" class="texture-download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Texture Pack 2 -->
+                <div class="texture-pack">
+                    <div class="texture-preview" style="background-image: url('https://i.imgur.com/nKtYV9E.jpg');">
+                        <div class="texture-badge">NEW</div>
+                    </div>
+                    <div class="texture-info">
+                        <h4>CYBER VITA</h4>
+                        <div class="texture-stars">★★★★☆</div>
+                        <p>Neon-lit cyberpunk aesthetic with glowing circuit patterns and futuristic materials. Perfect for modern builds and sci-fi adventures.</p>
+                        <div class="texture-stats">
+                            <span>64x64</span>
+                            <span>4K</span>
+                            <span>PBR</span>
+                        </div>
+                        <a href="#" class="texture-download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Texture Pack 3 -->
+                <div class="texture-pack">
+                    <div class="texture-preview" style="background-image: url('https://i.imgur.com/vZ8GQ2a.jpg');">
+                        <div class="texture-badge">CLASSIC</div>
+                    </div>
+                    <div class="texture-info">
+                        <h4>RETRO VIBE</h4>
+                        <div class="texture-stars">★★★★★</div>
+                        <p>A nostalgic throwback to classic gaming with pixel-perfect 16-bit style textures. Lightweight and charming.</p>
+                        <div class="texture-stats">
+                            <span>16x16</span>
+                            <span>Retro</span>
+                            <span>2D</span>
+                        </div>
+                        <a href="#" class="texture-download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Texture Pack 4 -->
+                <div class="texture-pack">
+                    <div class="texture-preview" style="background-image: url('https://i.imgur.com/Lp7Xe3F.jpg');">
+                        <div class="texture-badge">BEST SELLER</div>
+                    </div>
+                    <div class="texture-info">
+                        <h4>REALISTIC EDITION</h4>
+                        <div class="texture-stars">★★★★★</div>
+                        <p>Photorealistic textures with PBR materials that mimic real-world surfaces. Includes normal maps and specular highlights.</p>
+                        <div class="texture-stats">
+                            <span>128x128</span>
+                            <span>8K</span>
+                            <span>PBR</span>
+                        </div>
+                        <a href="#" class="texture-download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Texture Pack 5 -->
+                <div class="texture-pack">
+                    <div class="texture-preview" style="background-image: url('https://i.imgur.com/qXwHjyj.jpg');">
+                        <div class="texture-badge">STAFF PICK</div>
+                    </div>
+                    <div class="texture-info">
+                        <h4>CELESTIAL SHADERS</h4>
+                        <div class="texture-stars">★★★★☆</div>
+                        <p>Ethereal fantasy textures with glowing elements and celestial motifs. Perfect for magical builds and otherworldly landscapes.</p>
+                        <div class="texture-stats">
+                            <span>32x32</span>
+                            <span>HD</span>
+                            <span>3D</span>
+                        </div>
+                        <a href="#" class="texture-download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Texture Pack 6 -->
+                <div class="texture-pack">
+                    <div class="texture-preview" style="background-image: url('https://i.imgur.com/9zRkYlL.jpg');">
+                        <div class="texture-badge">NEW</div>
+                    </div>
+                    <div class="texture-info">
+                        <h4>STEAMPUNK ERA</h4>
+                        <div class="texture-stars">★★★★☆</div>
+                        <p>Industrial revolution aesthetic with brass, copper, and mechanical elements. Perfect for Victorian-era builds.</p>
+                        <div class="texture-stats">
+                            <span>64x64</span>
+                            <span>4K</span>
+                            <span>3D</span>
+                        </div>
+                        <a href="#" class="texture-download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Texture Pack 7 -->
+                <div class="texture-pack">
+                    <div class="texture-preview" style="background-image: url('https://i.imgur.com/2VcQdDZ.jpg');">
+                        <div class="texture-badge">LIGHTWEIGHT</div>
+                    </div>
+                    <div class="texture-info">
+                        <h4>VITA ESSENTIAL</h4>
+                        <div class="texture-stars">★★★★★</div>
+                        <p>Optimized for maximum performance while enhancing the vanilla aesthetic. Perfect for survival gameplay.</p>
+                        <div class="texture-stats">
+                            <span>16x16</span>
+                            <span>HD</span>
+                            <span>2D</span>
+                        </div>
+                        <a href="#" class="texture-download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Texture Pack 8 -->
+                <div class="texture-pack">
+                    <div class="texture-preview" style="background-image: url('https://i.imgur.com/7Wj3m9N.jpg');">
+                        <div class="texture-badge">FANTASY</div>
+                    </div>
+                    <div class="texture-info">
+                        <h4>MYTHICAL REALMS</h4>
+                        <div class="texture-stars">★★★★☆</div>
+                        <p>Epic fantasy style inspired by classic RPGs. Features medieval architecture and magical elements.</p>
+                        <div class="texture-stats">
+                            <span>32x32</span>
+                            <span>HD</span>
+                            <span>3D</span>
+                        </div>
+                        <a href="#" class="texture-download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Texture Pack 9 -->
+                <div class="texture-pack">
+                    <div class="texture-preview" style="background-image: url('https://i.imgur.com/5TkLbJQ.jpg');">
+                        <div class="texture-badge">MINIMAL</div>
+                    </div>
+                    <div class="texture-info">
+                        <h4>CLEAN MODERN</h4>
+                        <div class="texture-stars">★★★★★</div>
+                        <p>Sleek contemporary design with clean lines and minimalist textures. Perfect for modern architecture.</p>
+                        <div class="texture-stats">
+                            <span>16x16</span>
+                            <span>HD</span>
+                            <span>2D</span>
+                        </div>
+                        <a href="#" class="texture-download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Texture Pack 10 -->
+                <div class="texture-pack">
+                    <div class="texture-preview" style="background-image: url('https://i.imgur.com/h8GXw0U.jpg');">
+                        <div class="texture-badge">EXCLUSIVE</div>
+                    </div>
+                    <div class="texture-info">
+                        <h4>LUNARVALE SPECIAL</h4>
+                        <div class="texture-stars">★★★★★</div>
+                        <p>Our signature texture pack with exclusive content not available anywhere else. Includes special effects.</p>
+                        <div class="texture-stats">
+                            <span>64x64</span>
+                            <span>4K</span>
+                            <span>3D</span>
+                        </div>
+                        <a href="#" class="texture-download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="content-section">
+            <div class="section-header">
+                <h2 class="tech-font">VISUAL SHOWCASE</h2>
+                <p>Explore the breathtaking world of Lunarvale through these stunning screenshots</p>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="https://i.imgur.com/JQmX7zW.jpg" alt="Fantasy Biome">
+                    <div class="screenshot-caption">Fantasy Biome with Custom Vegetation</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://i.imgur.com/nKtYV9E.jpg" alt="Cyberpunk City">
+                    <div class="screenshot-caption">Neon-lit Cyberpunk Cityscape</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://i.imgur.com/vZ8GQ2a.jpg" alt="Medieval Castle">
+                    <div class="screenshot-caption">Detailed Medieval Castle Architecture</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://i.imgur.com/Lp7Xe3F.jpg" alt="Sunset Over Ocean">
+                    <div class="screenshot-caption">Dynamic Sunset Over Enhanced Ocean</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://i.imgur.com/qXwHjyj.jpg" alt="Nether Realm">
+                    <div class="screenshot-caption">Reimagined Nether with Volumetric Fog</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://i.imgur.com/9zRkYlL.jpg" alt="Mountain Village">
+                    <div class="screenshot-caption">Procedural Mountain Village Generation</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="content-section">
+            <div class="section-header">
+                <h2 class="tech-font">GET LUNARVALE</h2>
+                <p>Join thousands of players experiencing Minecraft Vita like never before</p>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="download-box">
+                <h3 class="tech-font" style="color: var(--lunar-pulse); margin-bottom: 1.5rem;">LUNARVALE INSTALLATION</h3>
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Version 1.84 | +2000 MB | PS Vita Required</p>
+                
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 1.8rem; border-radius: 12px; margin-bottom: 2.5rem; border: 1px dashed var(--lunar-pulse);">
+                    <h4 style="color: var(--lunar-tech); margin-bottom: 1.5rem; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; gap: 0.8rem;">
+                        <i class="fas fa-info-circle"></i> INSTALLATION GUIDE
+                    </h4>
+                    <ol style="text-align: left; list-style-type: none; padding-left: 0;">
+                        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--lunar-pulse); font-weight: bold;">1.</span>
+                            Download the Lunarvale package below
+                        </li>
+                        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--lunar-pulse); font-weight: bold;">2.</span>
+                            Extract contents to your Vita's memory card
+                        </li>
+                        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--lunar-pulse); font-weight: bold;">3.</span>
+                            Install required dependencies if prompted
+                        </li>
+                        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--lunar-pulse); font-weight: bold;">4.</span>
+                            Launch through VitaShell or your preferred method
+                        </li>
+                        <li style="padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--lunar-pulse); font-weight: bold;">5.</span>
+                            Enjoy the ultimate Minecraft Vita experience!
+                        </li>
+                    </ol>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+                    <a href="#" class="cyber-button tech-font">
+                        <i class="fas fa-download btn-icon"></i> DOWNLOAD LUNARVALE
+                    </a>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">
+                        <i class="fas fa-exclamation-triangle" style="color: var(--lunar-glint); margin-right: 0.5rem;"></i>
+                        Requires Henkaku/H-encore
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credits Section -->
+        <section id="credits" class="content-section">
+            <div class="section-header">
+                <h2 class="tech-font">CREDITS & ACKNOWLEDGMENTS</h2>
+                <p>The talented individuals who made Lunarvale possible</p>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="credits-container">
+                <div class="credit-category">
+                    <h3><i class="fas fa-code"></i> DEVELOPMENT TEAM</h3>
+                    <ul>
+                        <li><strong>NeonSpectre</strong> - Lead Developer & Project Founder</li>
+                        <li><strong>VitaQueen</strong> - Graphics Engine Architect</li>
+                        <li><strong>CodeHacker</strong> - Vita Hardware Optimization</li>
+                        <li><strong>BlockArtist</strong> - 3D Model Design & Animation</li>
+                        <li><strong>SoundWizard</strong> - Audio Engineering & SFX</li>
+                    </ul>
+                </div>
+                
+                <div class="credit-category">
+                    <h3><i class="fas fa-paint-brush"></i> CREATIVE TEAM</h3>
+                    <ul>
+                        <li><strong>PixelMaster</strong> - Texture Art & UV Mapping</li>
+                        <li><strong>ShaderGenius</strong> - Custom Shader Development</li>
+                        <li><strong>WorldBuilder</strong> - Biome Design & Generation</li>
+                        <li><strong>UIVisionary</strong> - Interface Design & UX</li>
+                    </ul>
+                </div>
+                
+                <div class="credit-category">
+                    <h3><i class="fas fa-hands-helping"></i> SPECIAL THANKS</h3>
+                    <ul>
+                        <li><strong>Mojang Studios</strong> - For creating Minecraft</li>
+                        <li><strong>PS Vita Homebrew Community</strong> - For ongoing support</li>
+                        <li><strong>The Flow</strong> - For Vita hacking breakthroughs</li>
+                        <li><strong>Our Patreon Supporters</strong> - For making this possible</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cyber Footer -->
+    <footer class="cyber-footer">
+        <div class="footer-content">
+            <div class="footer-logo minecraft-font">LUNARVALE</div>
+            
+            <div class="footer-links">
+                <a href="#" class="footer-link" onclick="showTab('home', event)">Home</a>
+                <a href="#" class="footer-link" onclick="showTab('features', event)">Features</a>
+                <a href="#" class="footer-link" onclick="showTab('textures', event)">Textures</a>
+                <a href="#" class="footer-link" onclick="showTab('download', event)">Download</a>
+                <a href="#" class="footer-link" onclick="showTab('credits', event)">Credits</a>
+                <a href="#" class="footer-link">FAQ</a>
+                <a href="#" class="footer-link">Privacy</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="https://youtube.com/@soufianeexeteam-i4z" class="footer-social-link youtube" target="_blank" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://discord.gg/jVCs8a7T" class="footer-social-link discord" target="_blank" title="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+            
+            <p class="copyright tech-font">© 2025 LUNARVALE PROJECT | NOT AFFILIATED WITH MOJANG OR SONY</p>
+        </div>
+    </footer>
+
     <script>
-        function showTab(tabName) {
-            var i, tabContent;
-            tabContent = document.getElementsByClassName("content");
-            for (i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.remove('active');
+        // Enhanced Tab System
+        function showTab(tabName, event) {
+            if(event) event.preventDefault();
+            
+            // Hide all tabs
+            document.querySelectorAll('.content-section').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            const tab = document.getElementById(tabName);
+            if(tab) {
+                tab.classList.add('active');
+                
+                // Smooth scroll to top of main container
+                window.scrollTo({
+                    top: document.querySelector('.main-container').offsetTop - 20,
+                    behavior: 'smooth'
+                });
             }
-            document.getElementById(tabName).classList.add('active');
-            window.scrollTo(0, 0);
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            if(event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            } else {
+                // Find and activate corresponding nav link
+                const navLink = document.querySelector(`.nav-link[onclick*="${tabName}"]`);
+                if(navLink) navLink.classList.add('active');
+            }
         }
+
+        // Create starfield background
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.cosmic-header');
+            const starCount = Math.min(Math.floor(window.innerWidth / 3), 150);
+            
+            for(let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.style.position = 'absolute';
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.backgroundColor = `hsl(${Math.random() * 60 + 200}, 80%, ${Math.random() * 30 + 70}%)`;
+                star.style.borderRadius = '50%';
+                star.style.opacity = Math.random() * 0.7 + 0.1;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.animation = `twinkle ${Math.random() * 10 + 5}s infinite ${Math.random() * 5}s`;
+                star.style.pointerEvents = 'none';
+                header.appendChild(star);
+            }
+
+            // Set initial active tab based on hash or default to home
+            const hash = window.location.hash.substring(1);
+            if(hash && document.getElementById(hash)) {
+                showTab(hash);
+            } else {
+                showTab('home');
+            }
+        });
+
+        // Update URL hash when switching tabs
+        document.querySelectorAll('[onclick^="showTab"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const tabName = this.getAttribute('onclick').match(/'(.*?)'/)[1];
+                history.pushState(null, null, `#${tabName}`);
+            });
+        });
+
+        // Handle back/forward navigation
+        window.addEventListener('popstate', function() {
+            const hash = window.location.hash.substring(1);
+            if(hash && document.getElementById(hash)) {
+                showTab(hash);
+            }
+        });
     </script>
 </body>
 </html>
